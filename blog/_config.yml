@@ -109,17 +109,3 @@ deploy:
     branch: gh-pages
 
 
-# gitalk
-plugins:
-  gitalk:
-    enable: true
-    clientID: f54b81971733e48d9f27
-    clientSecret: 7d877bce1eb03f43094c18dbf53fc17a108c5655
-    repo: GitHub repo
-    owner: GitHub repo owner
-    admin: 
-      - GitHub repo owner and collaborators, only these guys can initialize github issues
-    distractionFreeMode: false
-    hrefTrimend: '#.*$,\\?.*$,index.html$'
-
-    
