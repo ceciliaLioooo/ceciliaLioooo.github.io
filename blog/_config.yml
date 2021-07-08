@@ -107,5 +107,6 @@ deploy:
     repo: https://github.com/ceciliaLioooo/ceciliaLioooo.github.io
     # example, https://github.com/hexojs/hexojs.github.io
     branch: gh-pages
+    extend_dirs: /portfolio
 
 

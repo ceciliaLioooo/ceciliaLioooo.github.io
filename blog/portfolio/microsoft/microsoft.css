@@ -1,0 +1,545 @@
+body {
+    margin: 0 auto;
+}
+
+* {
+    box-sizing: border-box;
+    font-family: "Segoe MDL2 Assets","Microsoft JhengHei";
+}
+ul{
+    padding: 0;
+    margin: 0;
+}
+ul li{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+
+header {
+    margin: 0 auto;
+    width: 80%;
+    height: 54px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    position: relative;
+}
+
+.navL {
+    display: inline-flex;
+}
+/* 導覽紐 */
+.navL-menuButtom{
+    display:none;
+}
+.navL img{
+    padding-right: 10px;
+}
+
+.nav-Main ul {
+    display: flex;
+}
+.nav-Main ul li{
+    list-style-type: none;
+    margin-right: 10px;
+    line-height: 35px;  
+    font-size: 13px;
+    /* 不會換行 */
+    white-space:nowrap;
+}
+.nav-Main > ul >li:nth-child(6){
+    margin-right: 50%;padding-right: 100px;
+}
+.nav-Main > ul >li:nth-child(7)::after{
+    content: " "; 
+}
+
+.pcMenu{
+    opacity: 0;
+    z-index: -10;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    width: auto;
+    top:52px;
+    left: 0;
+}
+.pcMenu-top{
+    /* opacity: 1; */
+    background-color: #f2f2f2;
+    display: flex;
+    /* left: 0; */
+}
+.pcMenu-top ul{
+    /* opacity: 0; */
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+}
+.pcMenu-top ul li{
+    padding: 12px 0 6px 24px;    
+}
+.pcMenu-top ul li:nth-child(1){
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+.pcMenu-top div{
+    justify-self:start;
+}
+.pcMenu-btm{
+    background-color: #d3d2d2;
+    width:100%;
+    height: 50px;
+    text-align: center;
+    padding-top: 15px;
+    border-bottom: 3px solid;
+}
+.pcMenu-btm img{
+    width: 25px;
+}
+
+header div:nth-child(4):hover ~.pcMenu{
+    opacity: 1;
+    z-index: 10;
+}
+.navR {
+    width: 241px;
+    display: flex;
+    line-height: 34px;
+    font-size: 13px;
+    white-space:nowrap;
+}
+    /* content只有AFTER和BEFORE可以用 */
+    /* content: ""; */
+/* 地球 
+向下箭頭  
+向右箭頭 
+導覽列三橫 
+暫停  */
+.navR div:nth-child(1)::after{
+    font-family: "Segoe MDL2 Assets";
+    content: "";
+}
+.navR div:nth-child(2)::after{
+    font-family: "Segoe MDL2 Assets";
+    content: "";
+}
+.pcMenu-btm::after{
+    content: "";
+}
+
+.navR-2{
+    display: none;
+}
+.navR div{
+    text-align: center;
+    margin-right: 10%;
+} 
+
+main {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.section-1-banner {
+    background-image: url(./img/banner-1.jpg);
+    background-size: cover;
+    background-position: right;
+    padding: 90px 10%;
+}
+
+
+.section-1-intro{
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.section-1-H1{
+    font-size: 24px;
+    font-weight: bold;
+}
+.section-1-T1{
+    font-size: 15px;
+}
+.banner-btn{
+    font-size: 15px;
+}
+.banner {
+    width: 100%;
+    height: 500px;
+    margin-bottom: 48px;
+}
+/* J裡有個小問題 */
+.banner a{
+    background-color: black;
+    width: 123px;
+    padding: 20px;
+    text-align: center;
+
+    text-decoration: none;
+    color: white;
+}
+.section-2 {
+    width: 100%;
+    height: auto;
+}
+
+.containerType {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.type {
+    width: 184px;
+    height: 112px;
+    margin:0 20px 20px 0;
+    text-align: center;
+}
+.containerType img{
+    margin-bottom: 15px;
+}
+
+.containerType div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.section-3-containerProduct {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.text-h {
+    font-size: 20px;
+}
+
+.text-t {
+    font-size: 15px;
+}
+
+.product {
+    width: 25%;
+    /* height: 350px; */
+    height: auto;
+    padding: 0 10px;
+}
+
+.product img {
+    width: 100%;
+}
+.product .buy-btn{
+    display: flex;
+    white-space: nowrap;
+}
+.product .buy-btn img {
+    width: 20px;
+    height: 20px;
+    padding: 5px;
+}
+.product .buy-btn:hover{
+    text-decoration: #005da6;
+    text-decoration: underline 2px;
+    
+}
+.product .buy-btn:hover img{
+    transition-timing-function: 10s;
+    transform:translateX(10px);
+}
+
+.buy-btn{
+    padding-top: 20px;
+    color:#005da6;
+    font-weight: bold;
+}
+
+
+.section-4 {
+    width: 100%;
+}
+
+.section-4-banner {
+    width: 100%;
+    background-image: url(./img/banner-4.jpeg);
+    background-size: cover;
+    background-position: right;
+    font-size: 15px;
+    padding: 0 30px;
+    /* max-width: 2048px; */
+}
+
+
+
+.containerProduct-btm{
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
+}
+
+.section-6 a{
+    width: 28px;height: 28px;
+    margin-right: 20px;
+}
+.section-6{
+    margin-top: 30px;
+    display: flex;
+
+}
+.micro {
+    margin-right: 20px;
+}
+
+
+footer{
+    /* display:flex; */
+    background-color:rgba(0, 0, 0, 0.15);
+    width: 100%;
+    height: auto;
+    font-size: 15px;
+}
+.footer-pcMenu-base{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.footer-pcMenu-base-L{
+    display: flex;
+    padding: 0 12px;
+    justify-content: space-between;
+}
+.footer-pcMenu-base-R{
+    display: flex;
+    padding: 0 12px;
+    justify-content: space-between;
+    
+}
+
+.footer-base-heading{
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    font-weight: bold;
+    padding: 32px 50px 0px;
+}
+.footer-pcMenu-base ul li{
+    padding: 8px 0;
+}
+.footer-btm{
+    width: 100%;
+    height: auto;
+    padding-top: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: rgba(0, 0, 0, 0.548);
+}
+
+
+.pcMenu-language{
+    margin-right: 30%;
+}
+.pcMenu-language a{
+    line-height: 10px;
+}
+.pcMenu-language img{
+    width: 26px;height: 26px;
+    opacity:0.5;
+}
+.pcMenu-R{
+    display: flex;
+    line-height: 38px;
+}
+footer a{
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.548);
+}
+footer a:hover{
+    text-decoration:underline;
+}
+.footer-rule{
+    width: 380px;
+}
+.footer-rule ul{
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: 3%;
+} 
+
+.footer-rule li{
+    margin-right: 10px;
+}
+
+
+@media (max-width:1080px){
+header{
+    width: 100%;
+}
+main{
+    width: 100%;
+}
+.product{
+    width: 50%;
+}
+.navR{
+    display: none;
+}
+.navL{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.navR-2{
+    display: flex;
+    /* justify-content: flex-start; */
+    /* flex-direction:row; */
+    /* align-content: flex-end; */
+    width:100%;
+}
+.navR-2 div:nth-child(1)::after{
+    font-family: "Segoe MDL2 Assets";
+    content: "";
+}
+.navR-2 div:nth-child(2)::after{
+    font-family: "Segoe MDL2 Assets";
+    content: "";
+}
+
+.navR-2 div:nth-child(1) , .navR-2 div:nth-child(2){
+    /* background-color:black; */
+    margin:10px;
+    /* line-height: 15px; */
+}
+.navR-2 div:nth-child(3) {
+    /* background-color: black; */
+    justify-self:start;
+}
+
+.section-3 , .section-5{
+    width: 80%;
+    margin: 0 auto;
+}
+.footer-pcMenu-base{
+    flex-wrap: wrap;
+}
+.footer-pcMenu-base-L{
+    width: 100%;
+}
+.footer-pcMenu-base-R{
+    width: 100%;
+}
+.footer-base-heading{
+    width: 33%;
+}
+}
+@media(max-width:767px){
+header{
+display: flex;
+justify-content: flex-end;
+}
+
+header div:nth-of-type(4){
+    background-image: url(./icon/menu.svg);
+    width: 50px;height: 40px;
+    background-size: cover;
+    font-size: 0px;
+}
+.pcMenu{
+    opacity: 1;
+    width: 100%;
+}
+
+/* sos  sos  sos  sos  sos  sos  sos  sos */
+.pcMenu-top{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.pcMenu-top ul li:nth-child(1)::after{
+    content: " "; 
+}
+.pcMenu-top ul li:nth-of-type(n+2){
+    display: none;
+}
+
+
+header div:nth-of-type(4):hover .pcMenu{
+    opacity: 1;
+    z-index: 10;
+}
+.section-1-intro{
+    display: block;
+}
+.section-2 .containerType {
+    width:80% ;
+    margin:0 auto 20px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+.section-2 .containerType img{
+    margin:0 8px 0 0 ;    
+    width: 20px;height: 20px;
+}
+.section-2 .containerType div{
+    display:flex;
+    flex-direction:row;
+    white-space: nowrap;
+    justify-content: left;
+}
+.type {
+    width: 184px;
+    height: auto;
+    margin: 0 20px 20px 0;
+}
+
+}
+@media(max-width:538px){
+    /* header{
+        position: absolute;
+    } */
+    .navL{
+        /* background-color:lightgray; */
+        /* display: flex;
+        justify-content: flex-start; */
+    }
+    .navL-menuButtom{
+        display:inline;
+    }
+    .navL-menuButtom img{
+        height: 90%;
+        opacity: 0.5;
+    }
+    .nav-Main{
+        display:none;
+    }
+    .nav-logo{
+        position: absolute;
+        /* position: relative; */
+        left: calc(50% - 60px);
+        height: auto;
+    }
+
+    .section-1-banner{
+        background-image:url(./img/banner-1-mobile.jpeg);
+        background-position:center;
+        background-size:cover;
+        width:100%;
+}
+}
