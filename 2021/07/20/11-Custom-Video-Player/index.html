@@ -231,8 +231,7 @@
 </ul>
 <figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> skips = [...document.querySelectorAll(<span class="string">&#x27;.player__button&#x27;</span>)];</span><br><span class="line"><span class="keyword">const</span> sliders = [...document.querySelectorAll(<span class="string">&#x27;.player__slider&#x27;</span>)];</span><br><span class="line"></span><br><span class="line">skips.forEach(<span class="function"><span class="params">s</span>=&gt;</span>s.addEventListener(<span class="string">&#x27;click&#x27;</span>,skip));</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">skip</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      video.currentTime += <span class="built_in">Number</span>(<span class="built_in">this</span>.dataset.skip);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<h1 id="Step-3"><a href="#Step-3" class="headerlink" title="Step.3"></a>Step.3</h1><ul>
-<li>調整音量或速率</li>
+<h1 id="Step-3-調整音量或速率"><a href="#Step-3-調整音量或速率" class="headerlink" title="Step.3 調整音量或速率"></a>Step.3 調整音量或速率</h1><ul>
 <li>video.volume = video[volume] 不同取法，意思一樣</li>
 <li>音量 HTMLMediaElement.volume 值為0到1雙精度值，0為靜音、1為最大聲</li>
 <li>速率 HTMLMediaElement.playbackRate 浮點數1.0表示正常的播放速率</li>
