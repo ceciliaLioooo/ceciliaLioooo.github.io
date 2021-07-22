@@ -127,6 +127,68 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
@@ -149,7 +211,25 @@
         </header>
 
         <div class="post-content">
-            
+            <h1 id="要達成的功能"><a href="#要達成的功能" class="headerlink" title="要達成的功能"></a>要達成的功能</h1><p>按下鍵盤上相對應按鍵，會發出聲音，就像用電腦打鼓一樣。</p>
+<h1 id="規劃要做的步驟"><a href="#規劃要做的步驟" class="headerlink" title="規劃要做的步驟"></a>規劃要做的步驟</h1><h1 id="Step-1-按下按鍵，回傳data-key，加上-class效果"><a href="#Step-1-按下按鍵，回傳data-key，加上-class效果" class="headerlink" title="Step.1 按下按鍵，回傳data-key，加上 class效果"></a>Step.1 <em>按下按鍵，回傳data-key，加上 class效果</em></h1><ul>
+<li>querySelectorAll會產出 類陣列，使用方法受限制，需要轉成陣列才能使用.find</li>
+<li>使用絕對相等</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> allData = [...document.querySelectorAll(<span class="string">&quot;.key&quot;</span>)];</span><br><span class="line"><span class="keyword">const</span> allAudio = [...document.querySelectorAll(<span class="string">&quot;audio&quot;</span>)];</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&quot;keydown&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 回傳data-key</span></span><br><span class="line">    <span class="keyword">let</span> theKey = allData.find(<span class="function"><span class="params">element</span> =&gt;</span> </span><br><span class="line">        <span class="built_in">Number</span>(element.dataset.key) === e.keyCode </span><br><span class="line">        );</span><br><span class="line"></span><br><span class="line">    theKey.classList.add(<span class="string">&quot;playing&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Step-2-播放聲音"><a href="#Step-2-播放聲音" class="headerlink" title="Step.2 播放聲音"></a>Step.2 播放聲音</h1><ul>
+<li>使用絕對相等</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//播放聲音</span></span><br><span class="line"><span class="keyword">let</span> theVoice = allAudio.find(<span class="function">(<span class="params">element</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">Number</span>(element.dataset.key) === e.keyCodee;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">theVoice.currentTime = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//要被播放的audio.play();</span></span><br><span class="line">theVoice.play();</span><br></pre></td></tr></table></figure>
+
+<h1 id="Step-3-移除class"><a href="#Step-3-移除class" class="headerlink" title="Step.3 移除class"></a>Step.3 移除class</h1><ul>
+<li>使用 keyup</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//手指離開鍵盤，即移除class</span></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">&quot;keyup&quot;</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</span><br><span class="line">    theKey.classList.remove(<span class="string">&quot;playing&quot;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reference-material"><a href="#Reference-material" class="headerlink" title="Reference material"></a>Reference material</h1><p>with my friends.</p>
+
         </div>
 
         
