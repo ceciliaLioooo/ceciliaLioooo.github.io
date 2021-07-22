@@ -4,6 +4,8 @@ tags: JavaScript30
 abbrlink: 24331
 date: 2021-07-20 05:44:01
 ---
+# 作品連結
+- [Custom Video Player](https://cecilialioooo.github.io/portfolio/11-custom-video-player/)
 
 # 要達成的功能
 
