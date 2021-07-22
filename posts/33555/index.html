@@ -13,7 +13,7 @@
 
 
 
-<title>04-array_cardio_day_1 | Ceciliaaaaaaa</title>
+<title>04 - Array Cardi Day 1 | Ceciliaaaaaaa</title>
 
 
 
@@ -127,11 +127,73 @@
                 <div class="container">
     
     
+        <div class="post-toc">
+    <div class="tocbot-list">
+    </div>
+    <div class="tocbot-list-menu">
+        <a class="tocbot-toc-expand" onclick="expand_toc()">Expand all</a>
+        <a onclick="go_top()">Back to top</a>
+        <a onclick="go_bottom()">Go to bottom</a>
+    </div>
+</div>
+
+<script>
+    document.ready(
+        function () {
+            tocbot.init({
+                tocSelector: '.tocbot-list',
+                contentSelector: '.post-content',
+                headingSelector: 'h1, h2, h3, h4, h5',
+                collapseDepth: 1,
+                orderedList: false,
+                scrollSmooth: true,
+            })
+        }
+    )
+
+    function expand_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 6,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "collapse_toc()");
+        b.innerHTML = "Collapse all"
+    }
+
+    function collapse_toc() {
+        var b = document.querySelector(".tocbot-toc-expand");
+        tocbot.init({
+            tocSelector: '.tocbot-list',
+            contentSelector: '.post-content',
+            headingSelector: 'h1, h2, h3, h4, h5',
+            collapseDepth: 1,
+            orderedList: false,
+            scrollSmooth: true,
+        });
+        b.setAttribute("onclick", "expand_toc()");
+        b.innerHTML = "Expand all"
+    }
+
+    function go_top() {
+        window.scrollTo(0, 0);
+    }
+
+    function go_bottom() {
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+</script>
+    
 
     
     <article class="post-wrap">
         <header class="post-header">
-            <h1 class="post-title">04-array_cardio_day_1</h1>
+            <h1 class="post-title">04 - Array Cardi Day 1</h1>
             
                 <div class="post-meta">
                     
@@ -149,7 +211,47 @@
         </header>
 
         <div class="post-content">
-            
+            <p>學習幾個運算 Array 的方法！有趣！</p>
+<h1 id="第一題-Filter-the-list-of-inventors-for-those-who-were-born-in-the-1500’s"><a href="#第一題-Filter-the-list-of-inventors-for-those-who-were-born-in-the-1500’s" class="headerlink" title="第一題 Filter the list of inventors for those who were born in the 1500’s"></a>第一題 Filter the list of inventors for those who were born in the 1500’s</h1><ul>
+<li>filter:利用條件篩選出原陣列中符合條件的物件</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> born1500s = inventors.filter(<span class="function">(<span class="params">value, index, arr</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> value.year &lt; <span class="number">1600</span> &amp;&amp; value.year &gt;= <span class="number">1500</span>;</span><br><span class="line">            &#125;);</span><br><span class="line">							<span class="built_in">console</span>.log(born1500s);</span><br></pre></td></tr></table></figure>
+
+<h1 id="第二題-Give-us-an-array-of-the-inventors-first-and-last-names"><a href="#第二題-Give-us-an-array-of-the-inventors-first-and-last-names" class="headerlink" title="第二題 Give us an array of the inventors first and last names"></a>第二題 Give us an array of the inventors first and last names</h1><ul>
+<li>Array.prototype.map()</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> allName = inventors.map(<span class="function">(<span class="params">item, index, arr</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> item.first + <span class="string">&quot; &quot;</span> + item.last;</span><br><span class="line">            &#125;);</span><br><span class="line">						<span class="built_in">console</span>.log(allName);</span><br></pre></td></tr></table></figure>
+
+<h1 id="第三題-Sort-the-inventors-by-birthdate-oldest-to-youngest"><a href="#第三題-Sort-the-inventors-by-birthdate-oldest-to-youngest" class="headerlink" title="第三題 Sort the inventors by birthdate, oldest to youngest"></a>第三題 Sort the inventors by birthdate, oldest to youngest</h1><ul>
+<li>Array.prototype.sort()</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> sorted = inventors.sort(<span class="function"><span class="keyword">function</span> (<span class="params">a, b</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">if</span> (a.year &gt; b.year) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+
+<h1 id="第四題-How-many-years-did-all-the-inventors-live-all-together"><a href="#第四題-How-many-years-did-all-the-inventors-live-all-together" class="headerlink" title="第四題 How many years did all the inventors live all together?"></a>第四題 How many years did all the inventors live all together?</h1><ul>
+<li>Array.prototype.reduce()</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> allYears = inventors.map(<span class="function">(<span class="params">item, index, arr</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> item.passed - item.year;&#125;);</span><br><span class="line"><span class="keyword">let</span> calcSim = allYears.reduce(<span class="function">(<span class="params">prev, curr</span>) =&gt;</span> prev + curr);</span><br><span class="line"><span class="built_in">console</span>.log(calcSim);</span><br></pre></td></tr></table></figure>
+
+<h1 id="第五題-Sort-the-inventors-by-years-lived"><a href="#第五題-Sort-the-inventors-by-years-lived" class="headerlink" title="第五題 Sort the inventors by years lived"></a>第五題 Sort the inventors by years lived</h1><figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> openInventors = [...inventors].sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">return</span> b.passed - b.year - (a.passed - a.year);</span><br><span class="line">            &#125;);</span><br><span class="line"></span><br><span class="line">						<span class="built_in">console</span>.log(openInventors);</span><br></pre></td></tr></table></figure>
+
+<h1 id="第六題-create-a-list-of-Boulevards-in-Paris-that-contain-‘de’-anywhere-in-the-name"><a href="#第六題-create-a-list-of-Boulevards-in-Paris-that-contain-‘de’-anywhere-in-the-name" class="headerlink" title="第六題 create a list of Boulevards in Paris that contain ‘de’ anywhere in the name"></a>第六題 create a list of Boulevards in Paris that contain ‘de’ anywhere in the name</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris">https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris</a></li>
+<li>爬蟲初體驗</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> firstDataHalf = <span class="built_in">document</span>.querySelectorAll(<span class="string">&quot;.mw-category li&quot;</span>);</span><br><span class="line">              <span class="keyword">let</span> firstData = [...firstDataHalf];</span><br><span class="line">              <span class="keyword">let</span> mapfirstData = firstData.map(<span class="function"><span class="params">x</span> =&gt;</span> x.textContent);</span><br><span class="line">              <span class="built_in">console</span>.log(mapfirstData);</span><br><span class="line">              <span class="keyword">let</span> result = mapfirstData.filter(<span class="function"><span class="params">value</span> =&gt;</span> value.match(<span class="string">&quot;de&quot;</span>));</span><br><span class="line">              <span class="keyword">let</span> result = mapfirstData.filter(<span class="function"><span class="params">value</span> =&gt;</span> value.includes(<span class="string">&quot;de&quot;</span>));</span><br><span class="line"></span><br><span class="line">              <span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure>
+
+<h1 id="第七題-Sort-the-people-alphabetically-by-last-name"><a href="#第七題-Sort-the-people-alphabetically-by-last-name" class="headerlink" title="第七題 Sort the people alphabetically by last name"></a>第七題 Sort the people alphabetically by last name</h1><ul>
+<li>三元運算子</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> lastName = inventors.sort(<span class="function">(<span class="params">a, b</span>) =&gt;</span> (a.last &gt; b.last ? <span class="number">1</span> : -<span class="number">1</span>));</span><br><span class="line"><span class="built_in">console</span>.table(lastName);</span><br></pre></td></tr></table></figure>
+
+<h1 id="第八題-Sum-up-the-instances-of-each-of-these"><a href="#第八題-Sum-up-the-instances-of-each-of-these" class="headerlink" title="第八題 Sum up the instances of each of these"></a>第八題 Sum up the instances of each of these</h1><ul>
+<li>allNames[each]++</li>
+</ul>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> countData = data.reduce(<span class="function">(<span class="params">allNames, each</span>) =&gt;</span> &#123;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> (each <span class="keyword">in</span> allNames) &#123;</span><br><span class="line">                    allNames[each]++;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    allNames[each] = <span class="number">1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">return</span> allNames;</span><br><span class="line">            &#125;, &#123;&#125;);</span><br><span class="line"><span class="built_in">console</span>.table(countData);</span><br></pre></td></tr></table></figure>
+
+<h1 id="Reference-material"><a href="#Reference-material" class="headerlink" title="Reference material"></a>Reference material</h1><p>with my friends ♥</p>
+
         </div>
 
         
